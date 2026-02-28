@@ -2,10 +2,12 @@ import Image from 'next/image';
 import { GridItem } from '@/components/repos/GridItem';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
 import { MapPin } from 'lucide-react';
-import { getPinnedRepos } from '@/lib/github';
+import { getPinnedRepos, getContributionGraph } from '@/lib/github';
+import ContributionGrid from '@/components/contributions/ContributionGrid';
 
 export default async function HeroSection() {
   const pinnedRepos = await getPinnedRepos();
+  const graph = await getContributionGraph();
 
   return (
     <div className="flex items-start w-full gap-6 h-screen px-6 py-8 bg-card border-b border-border">
@@ -50,16 +52,25 @@ export default async function HeroSection() {
 
       {/* Right Section */}
       <div className="hidden md:flex flex-col gap-y-1 w-2/3">
-        <p className="text-sm font-semibold">Pinned</p>
+        {/* Pinned */}
+        <section>
+          <p className="text-sm font-semibold">Pinned</p>
 
-        {/* Projects */}
-        <ul className="grid grid-cols-2 grid-rows-2 gap-6 my-3">
-          {pinnedRepos.map((repo) => (
-            <GridItem key={repo.name} repo={repo} />
-          ))}
-        </ul>
+          <ul className="grid grid-cols-2 grid-rows-2 gap-6 my-3">
+            {pinnedRepos.map((repo) => (
+              <GridItem key={repo.name} repo={repo} />
+            ))}
+          </ul>
+        </section>
 
         {/* Contributions */}
+        <section className="space-y-6">
+          <h2 className="text-xl font-semibold dark:text-white">
+            {graph.totalContributions} Public Contributions This Year
+          </h2>
+
+          <ContributionGrid weeks={graph.weeks} />
+        </section>
       </div>
     </div>
   );

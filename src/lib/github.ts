@@ -1,45 +1,11 @@
-export type NormalizedRepo = {
-  id?: number;
-  name: string;
-  description: string | null;
-  url: string;
-  stars: number;
-  forks: number;
-  language: string | null;
-  homepage?: string;
-};
-
-type Repo = {
-  id: number;
-  name: string;
-  description: string | null;
-  html_url?: string;
-  stargazers_count?: number;
-  forks_count?: number;
-  homepage?: string;
-  language: string | null;
-};
-
-type PinnedRepo = {
-  name: string;
-  description: string | null;
-  stargazerCount: number;
-  forkCount: number;
-  url: string;
-  primaryLanguage: {
-    name: string;
-  } | null;
-};
-
-type GraphQLResponse = {
-  data: {
-    user: {
-      pinnedItems: {
-        nodes: PinnedRepo[];
-      };
-    };
-  };
-};
+import {
+  NormalizedRepo,
+  Repo,
+  PinnedRepo,
+  GraphQLResponse,
+  ContributionCalendar,
+  ContributionGraphResponse,
+} from '@/types/github';
 
 export async function getRepos(): Promise<NormalizedRepo[]> {
   const res = await fetch('https://api.github.com/users/AnujAcharjee/repos', {
@@ -111,11 +77,11 @@ export async function getPinnedRepos(): Promise<NormalizedRepo[]> {
   }));
 }
 
-export async function getContributionGraph() {
+export async function getContributionGraph(): Promise<ContributionCalendar> {
   const res = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN!}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
@@ -138,16 +104,14 @@ export async function getContributionGraph() {
         }
       `,
     }),
-    next: {
-      revalidate: 86400, // cache 24h
-    },
+    next: { revalidate: 86400 },
   });
 
   if (!res.ok) {
     throw new Error('Failed to fetch contribution graph');
   }
 
-  const json = await res.json();
+  const json: ContributionGraphResponse = await res.json();
 
   return json.data.viewer.contributionsCollection.contributionCalendar;
 }

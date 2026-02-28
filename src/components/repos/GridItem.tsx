@@ -2,8 +2,8 @@
 
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { Star, GitFork, ArrowUpRight, Globe } from 'lucide-react';
-import { LANGUAGE_COLORS } from '@/constants/languageColors';
-import type { NormalizedRepo } from '@/lib/github';
+import { LANGUAGE_COLORS } from '@/constants/colors';
+import type { NormalizedRepo } from '@/types/github';
 
 export function GridItem({ repo }: { repo: NormalizedRepo }) {
   return (

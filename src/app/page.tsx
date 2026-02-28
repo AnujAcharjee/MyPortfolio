@@ -12,7 +12,13 @@ export default async function Home() {
     <main>
       <Navbar />
       <Nav2 numRepos={repos.length} />
-      <HeroSection repos={repos} />
+      <HeroSection />
+
+      {/* <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 my-6">
+        {repos.map((repo) => (
+          // <GridItem key={repo.id} repo={repo} />
+        ))}
+      </ul> */}
     </main>
   );
 }
