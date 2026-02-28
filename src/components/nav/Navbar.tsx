@@ -20,14 +20,14 @@ export default function Navbar() {
       <div className="hidden md:flex items-center justify-between h-12">
         {/* Left Section */}
         <div className="flex items-center gap-4">
-          <div className="p-1 border border-white/20 rounded-sm hover:border-white/50 cursor-pointer">
+          <div className="p-1 border border-white/20 rounded-sm hover:border-white/50 cursor-not-allowed">
             <Menu color="#8a8a8a" size={20} />
           </div>
 
-          <i className="bi bi-github text-2xl cursor-pointer"></i>
+          <i className="bi bi-github text-2xl cursor-not-allowed"></i>
 
           <div>
-            <span className="font-sans font-bold text-md hover:text-white/70 cursor-pointer">
+            <span className="font-sans font-bold text-md hover:text-white/70 cursor-not-allowed">
               AnujAcharjee
             </span>
           </div>
@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Right Section */}
         <div className="flex items-center justify-end gap-4">
           {/* Search */}
-          <div className="flex items-center justify-between w-58 px-3 py-1.5 bg-[#0d1117] border border-white/20 rounded-md text-sm text-white/70 hover:border-white/30 transition cursor-pointer">
+          <div className="flex items-center justify-between w-58 px-3 py-1.5 bg-[#0d1117] border border-white/20 rounded-md text-sm text-white/70 hover:border-white/30 transition cursor-not-allowed">
             <div className="flex items-center gap-2">
               <Search size={16} />
               <div className="flex gap-1">
@@ -47,24 +47,24 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="flex items-center gap-1 p-1 border border-white/20 rounded-md hover:border-white/30 transition cursor-pointer">
+          <div className="flex items-center gap-1 p-1 border border-white/20 rounded-md hover:border-white/30 transition cursor-not-allowed">
             <Plus size={20} color="#8a8a8a" />
             <ChevronDown size={16} color="#8a8a8a" />
           </div>
 
-          <div className="flex items-center gap-1 p-1 border border-white/20 rounded-md hover:border-white/30 transition cursor-pointer">
+          <div className="flex items-center gap-1 p-1 border border-white/20 rounded-md hover:border-white/30 transition cursor-not-allowed">
             <CircleDot size={20} color="#8a8a8a" />
           </div>
 
-          <div className="flex items-center gap-1 p-1 border border-white/20 rounded-md hover:border-white/30 transition cursor-pointer">
+          <div className="flex items-center gap-1 p-1 border border-white/20 rounded-md hover:border-white/30 transition cursor-not-allowed">
             <GitPullRequestArrow size={20} color="#8a8a8a" />
           </div>
 
-          <div className="flex items-center gap-1 p-1 border border-white/20  rounded-md hover:border-white/30 transition cursor-pointer">
+          <div className="flex items-center gap-1 p-1 border border-white/20  rounded-md hover:border-white/30 transition cursor-not-allowed">
             <BookMarked size={20} color="#8a8a8a" />
           </div>
 
-          <div className="relative flex items-center gap-1 p-1 border border-white/20 rounded-md hover:border-white/30 transition cursor-pointer">
+          <div className="relative flex items-center gap-1 p-1 border border-white/20 rounded-md hover:border-white/30 transition cursor-not-allowed">
             <Bell size={20} color="#8a8a8a" />
 
             {/* Blue notification dot */}

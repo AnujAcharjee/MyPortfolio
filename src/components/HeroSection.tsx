@@ -10,9 +10,9 @@ export default async function HeroSection() {
   const graph = await getContributionGraph();
 
   return (
-    <div className="flex items-start w-full gap-6 h-screen px-6 py-8 bg-card border-b border-border">
+    <div className="sm:flex items-start w-full gap-6 sm:h-screen px-6 py-8 bg-card border-b border-border">
       {/* Left section */}
-      <div className="w-full md:w-1/3 h-auto flex flex-col items-center justify-center text-center">
+      <div className="w-full md:w-1/3 flex flex-col items-center justify-center text-center">
         <Image src="/avatar.jpeg" alt="User avatar" width={250} height={250} className="rounded-full" />
 
         <div className="my-5 font-sans pb-2 border-b border-white/30">
@@ -51,12 +51,12 @@ export default async function HeroSection() {
       </div>
 
       {/* Right Section */}
-      <div className="hidden md:flex flex-col gap-y-1 w-2/3">
+      <div className="hidden md:flex w-2/3 flex-col gap-y-6 mt-10 md:mt-0">
         {/* Pinned */}
         <section>
           <p className="text-sm font-semibold">Pinned</p>
 
-          <ul className="grid grid-cols-2 grid-rows-2 gap-6 my-3">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-3">
             {pinnedRepos.map((repo) => (
               <GridItem key={repo.name} repo={repo} />
             ))}
@@ -65,13 +65,14 @@ export default async function HeroSection() {
 
         {/* Contributions */}
         <section className="space-y-6">
-          <h2 className="text-xl font-semibold dark:text-white">
-            {graph.totalContributions} Public Contributions This Year
-          </h2>
-
           <ContributionGrid weeks={graph.weeks} />
         </section>
       </div>
+
+      {/* Small screen contributions */}
+      <section className="w-full sm:hidden space-y-3 sm:space-y-6 mt-8">
+        <ContributionGrid weeks={graph.weeks} />
+      </section>
     </div>
   );
 }

@@ -1,14 +1,14 @@
 'use client';
 
 import { GlowingEffect } from '@/components/ui/glowing-effect';
-import { Star, GitFork, ArrowUpRight, Globe } from 'lucide-react';
+import { Star, GitFork, ArrowUpRight, Globe, BookMarked } from 'lucide-react';
 import { LANGUAGE_COLORS } from '@/constants/colors';
 import type { NormalizedRepo } from '@/types/github';
 
 export function GridItem({ repo }: { repo: NormalizedRepo }) {
   return (
     <li className="list-none">
-      <div className="relative h-full rounded-xl border p-1">
+      <div className="relative h-full rounded-xl border p-1 shadow-inner shadow-white/10">
         <GlowingEffect
           blur={0}
           borderWidth={3}
@@ -23,7 +23,13 @@ export function GridItem({ repo }: { repo: NormalizedRepo }) {
           {/* Top */}
           <div onClick={() => window.open(repo.url, '_blank')} className="space-y-2 cursor-pointer">
             <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-base dark:text-white truncate">{repo.name}</h3>
+              <div className="flex items-center gap-2">
+                <BookMarked size={16} />
+                <h3 className="font-semibold text-sky-500/70 dark:text-white truncate">{repo.name}</h3>
+                <span className="py-0.5 px-2 border border-white/20 text-xs font-semibold rounded-2xl shadow-inner shadow-white/10">
+                  Public
+                </span>
+              </div>
               <ArrowUpRight className="w-4 h-4 text-neutral-500" />
             </div>
 
