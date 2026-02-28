@@ -10,7 +10,7 @@ export default async function HeroSection() {
   const graph = await getContributionGraph();
 
   return (
-    <div className="sm:flex items-start w-full gap-6 sm:h-screen px-6 py-8 bg-card border-b border-border">
+    <div id='about' className="sm:flex items-start w-full gap-6 sm:h-screen px-6 py-8 bg-card border-b border-border">
       {/* Left section */}
       <div className="w-full md:w-1/3 flex flex-col items-center justify-center text-center">
         <Image src="/avatar.jpeg" alt="User avatar" width={250} height={250} className="rounded-full" />

@@ -1,6 +1,8 @@
 import Navbar from '@/components/nav/Navbar';
 import Nav2 from '@/components/nav/Nav2';
 import HeroSection from '@/components/HeroSection';
+import Footer from '@/components/Footer';
+import Skills from '@/components/skills/skills';
 
 import { getRepos } from '@/lib/github';
 
@@ -19,6 +21,9 @@ export default async function Home() {
           // <GridItem key={repo.id} repo={repo} />
         ))}
       </ul> */}
+
+      {/* <Skills /> */}
+      <Footer />
     </main>
   );
 }
