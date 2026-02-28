@@ -1,13 +1,18 @@
-import Navbar from '@/components/Navbar';
-import Nav2 from '@/components/Nav2';
+import Navbar from '@/components/nav/Navbar';
+import Nav2 from '@/components/nav/Nav2';
 import HeroSection from '@/components/HeroSection';
 
-export default function Home() {
+import { getRepos } from '@/lib/github';
+
+export default async function Home() {
+  const repos = await getRepos();
+  // console.log(repos);
+
   return (
     <main>
       <Navbar />
-      <Nav2 />
-      <HeroSection />
+      <Nav2 numRepos={repos.length} />
+      <HeroSection repos={repos} />
     </main>
   );
 }
