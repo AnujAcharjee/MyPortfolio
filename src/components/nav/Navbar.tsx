@@ -8,8 +8,6 @@ import {
   Bell,
   Plus,
   ChevronDown,
-  Settings,
-  Share2,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -17,9 +15,9 @@ export default function Navbar() {
   return (
     <header className="w-full text-white px-6">
       {/* Large and mid screen */}
-      <div className="hidden md:flex items-center justify-between h-12">
+      <div className="flex items-center justify-between h-12">
         {/* Left Section */}
-        <div className="flex items-center gap-4">
+        <section className="flex items-center gap-4">
           <div className="p-1 border border-white/20 rounded-sm hover:border-white/50 cursor-not-allowed">
             <Menu color="#8a8a8a" size={20} />
           </div>
@@ -27,14 +25,14 @@ export default function Navbar() {
           <i className="bi bi-github text-2xl cursor-not-allowed"></i>
 
           <div>
-            <span className="font-sans font-bold text-md hover:text-white/70 cursor-not-allowed">
+            <span className="hidden sm:block font-bold text-md hover:text-white/70 cursor-not-allowed">
               AnujAcharjee
             </span>
           </div>
-        </div>
+        </section>
 
         {/* Right Section */}
-        <div className="flex items-center justify-end gap-4">
+        <section className="hidden sm:flex items-center justify-end gap-4">
           {/* Search */}
           <div className="flex items-center justify-between w-58 px-3 py-1.5 bg-[#0d1117] border border-white/20 rounded-md text-sm text-white/70 hover:border-white/30 transition cursor-not-allowed">
             <div className="flex items-center gap-2">
@@ -72,13 +70,7 @@ export default function Navbar() {
           </div>
 
           <Image src="/avatar.jpeg" alt="User avatar" width={32} height={32} className="rounded-full" />
-        </div>
-      </div>
-
-      {/* small screen */}
-      <div className="flex sm:hidden items-center justify-end gap-4  py-2 ">
-        <Share2 color="#70a7ff" />
-        <Settings color="#70a7ff" />
+        </section>
       </div>
     </header>
   );

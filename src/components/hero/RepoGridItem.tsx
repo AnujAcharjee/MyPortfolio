@@ -5,7 +5,7 @@ import { Star, GitFork, ArrowUpRight, Globe, BookMarked } from 'lucide-react';
 import { LANGUAGE_COLORS } from '@/constants/colors';
 import type { NormalizedRepo } from '@/types/github';
 
-export function GridItem({ repo }: { repo: NormalizedRepo }) {
+export function RepoGridItem({ repo }: { repo: NormalizedRepo }) {
   return (
     <li className="list-none">
       <div className="relative h-full rounded-xl border p-1 shadow-inner shadow-white/10">

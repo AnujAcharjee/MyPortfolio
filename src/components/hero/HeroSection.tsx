@@ -1,18 +1,18 @@
 import Image from 'next/image';
-import { GridItem } from '@/components/repos/GridItem';
+import { RepoGridItem } from '@/components/hero/RepoGridItem';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
 import { MapPin } from 'lucide-react';
 import { getPinnedRepos, getContributionGraph } from '@/lib/github';
-import ContributionGrid from '@/components/contributions/ContributionGrid';
+import ContributionGrid from '@/components/hero/ContributionGrid';
 
 export default async function HeroSection() {
   const pinnedRepos = await getPinnedRepos();
   const graph = await getContributionGraph();
 
   return (
-    <div id='about' className="sm:flex items-start w-full gap-6 sm:h-screen px-6 py-8 bg-card border-b border-border">
+    <div id="about" className="sm:flex items-start w-full gap-6 sm:h-screen px-6 py-8 bg-card">
       {/* Left section */}
-      <div className="w-full md:w-1/3 flex flex-col items-center justify-center text-center">
+      <section className="w-full md:w-1/3 flex flex-col items-center justify-center text-center">
         <Image src="/avatar.jpeg" alt="User avatar" width={250} height={250} className="rounded-full" />
 
         <div className="my-5 font-sans pb-2 border-b border-white/30">
@@ -48,30 +48,25 @@ export default async function HeroSection() {
               </div>,
           )}
         </div>
-      </div>
+      </section>
 
       {/* Right Section */}
-      <div className="hidden md:flex w-2/3 flex-col gap-y-6 mt-10 md:mt-0">
+      <section className="w-full md:w-2/3 flex flex-col gap-y-6 mt-10 md:mt-0">
         {/* Pinned */}
-        <section>
+        <div>
           <p className="text-sm font-semibold">Pinned</p>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-3">
             {pinnedRepos.map((repo) => (
-              <GridItem key={repo.name} repo={repo} />
+              <RepoGridItem key={repo.name} repo={repo} />
             ))}
           </ul>
-        </section>
+        </div>
 
         {/* Contributions */}
-        <section className="space-y-6">
+        <div className="space-y-6">
           <ContributionGrid weeks={graph.weeks} />
-        </section>
-      </div>
-
-      {/* Small screen contributions */}
-      <section className="w-full sm:hidden space-y-3 sm:space-y-6 mt-8">
-        <ContributionGrid weeks={graph.weeks} />
+        </div>
       </section>
     </div>
   );

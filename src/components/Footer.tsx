@@ -5,8 +5,8 @@ import { ArrowUp } from 'lucide-react';
 const LINKS = {
   nav: [
     { label: 'About', href: '#about' },
-    { label: 'Work', href: '#work' },
-    { label: 'Skills', href: '#skills' },
+    { label: 'Work', href: '#body' },
+    { label: 'Skills', href: '#body' },
     { label: 'Contact', href: '#contact' },
   ],
 };
