@@ -5,7 +5,7 @@ import { Star, GitFork, ArrowUpRight, Globe, BookMarked } from 'lucide-react';
 import { LANGUAGE_COLORS } from '@/constants/colors';
 import type { NormalizedRepo } from '@/types/github';
 
-export function RepoGridItem({ repo }: { repo: NormalizedRepo }) {
+export default function RepoGridItem({ repo }: { repo: NormalizedRepo }) {
   return (
     <li className="list-none">
       <div className="relative h-full rounded-xl border p-1 shadow-inner shadow-white/10">
@@ -19,9 +19,12 @@ export function RepoGridItem({ repo }: { repo: NormalizedRepo }) {
           inactiveZone={0.01}
         />
 
-        <div className="relative flex h-full flex-col rounded-lg p-3 dark:shadow-[0_0_20px_#2D2D2D]">
+        <div
+          onClick={() => window.open(repo.url, '_blank')}
+          className="relative flex h-full flex-col rounded-lg p-3 dark:shadow-[0_0_20px_#2D2D2D] cursor-pointer"
+        >
           {/* Top */}
-          <div onClick={() => window.open(repo.url, '_blank')} className="space-y-2 cursor-pointer">
+          <div className="space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <BookMarked size={16} />
