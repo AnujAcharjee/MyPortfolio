@@ -65,61 +65,60 @@ export function ProjectModal({ active, id, onClose }: ProjectModalProps) {
               {/* Body */}
               <div className="flex flex-col p-4 min-h-0">
                 {/* Header */}
-                <div className="flex items-start justify-between gap-6">
-                  {/* Left */}
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-mono text-sky-400/50 tracking-widest uppercase">
-                      repo
-                    </span>
-
+                <div className="flex flex-col gap-3 pb-4 border-b border-white/10">
+                  {/* Title + Actions row */}
+                  <div className="flex items-center justify-between w-full">
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}
-                      className="font-semibold text-white/90 font-mono text-lg md:text-xl mt-1"
+                      className="font-semibold text-sky-500/50 font-mono text-lg md:text-xl"
                     >
                       {active.title}
                     </motion.h3>
 
-                    {/* <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="text-white/50 text-xs md:text-sm font-mono mt-1 pb-4"
-                    >
-                      {active.description}
-                    </motion.p> */}
+                    <div className="flex items-center gap-3">
+                      {active.gitHubLink && (
+                        <motion.a
+                          layoutId={`github-${active.title}-${id}`}
+                          href={active.gitHubLink}
+                          target="_blank"
+                          className="flex items-center justify-center px-1.5 py-1 rounded-full hover:bg-sky-500/20 transition-colors"
+                        >
+                          <i className="bi bi-github text-xl md:text-2xl text-white/80"></i>
+                        </motion.a>
+                      )}
+
+                      {active.webLink && (
+                        <motion.a
+                          layoutId={`live-${active.title}-${id}`}
+                          href={active.webLink}
+                          target="_blank"
+                          className="flex items-center gap-2 p-2 text-xs rounded-md font-mono font-semibold bg-sky-500/15 hover:bg-sky-500/25 text-sky-400 border border-sky-500/25 transition-colors"
+                        >
+                          <span>LIVE</span>
+                          <SquareArrowOutUpRight size={12} />
+                        </motion.a>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Actions */}
-                  <div className="flex items-center gap-3">
-                    {active.gitHubLink && (
-                      <motion.a
-                        layoutId={`github-${active.title}-${id}`}
-                        href={active.gitHubLink}
-                        target="_blank"
-                        className="flex items-center justify-center px-1.5 py-1 rounded-full 
-                          hover:bg-sky-500/20 transition-colors"
-                      >
-                        <i className="bi bi-github text-xl md:text-2xl text-white/80"></i>
-                      </motion.a>
-                    )}
-
-                    {active.webLink && (
-                      <motion.a
-                        layoutId={`live-${active.title}-${id}`}
-                        href={active.webLink}
-                        target="_blank"
-                        className="flex items-center gap-2 p-2
-                          text-xs rounded-md font-mono font-semibold 
-                          bg-sky-500/15 hover:bg-sky-500/25 text-sky-400 
-                          border border-sky-500/25 transition-colors"
-                      >
-                        <span>LIVE</span>
-                        <SquareArrowOutUpRight size={12} />
-                      </motion.a>
-                    )}
-                  </div>
+                  {/* Description below */}
+                  <motion.p
+                    layoutId={`description-${active.description}-${id}`}
+                    className="text-white/50 text-xs md:text-sm font-mono"
+                  >
+                    {active.description}
+                  </motion.p>
                 </div>
 
                 {/* Divider */}
                 <div className="h-px bg-white/6" />
+
+                <motion.div
+                  layoutId={`description-${active.title}-${id}`}
+                  className="mt-2 text-[10px] font-mono text-emerald-400 tracking-widest uppercase"
+                >
+                  The Backstory
+                </motion.div>
 
                 {/* Content */}
                 <motion.div
