@@ -61,6 +61,7 @@ export default function ContactMe() {
 
   return (
     <div id="contact" className="w-full flex flex-col items-start gap-4 px-2 sm:py-10">
+      {/* Header — unchanged */}
       <TypewriterEffect words={CONTACT_WORDS} cursorClassName="!h-3 !w-0.5 sm:!h-4" />
 
       <HoverBorderGradient
@@ -68,7 +69,14 @@ export default function ContactMe() {
         as="div"
         className="w-full rounded-2xl overflow-hidden bg-card"
       >
-        <form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col gap-6 px-6 py-8">
+        {/* Top bar */}
+        <div className="flex items-center gap-1.5 px-4 sm:px-5 py-3">
+          <div className="w-2 h-2 rounded-full bg-red-400" />
+          <div className="w-2 h-2 rounded-full bg-yellow-400" />
+          <div className="w-2 h-2 rounded-full bg-green-400" />
+        </div>
+
+        <form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col gap-7 px-6 py-8">
           {/* Honeypot */}
           <input
             type="text"
@@ -114,13 +122,16 @@ export default function ContactMe() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
-              rows={5}
+              rows={6}
               className={cn(fieldCls, 'resize-none leading-relaxed')}
             />
           </FormField>
 
+          {/* Divider */}
+          <div className="h-px bg-white/6" />
+
           {/* Footer */}
-          <div className="flex items-center justify-between gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <AnimatePresence mode="wait">
               {feedback ?
                 <motion.span
@@ -134,13 +145,13 @@ export default function ContactMe() {
                   {feedback.icon}
                   {feedback.label}
                 </motion.span>
-              : <span />}
+              : <span className="text-xs font-mono text-white/15">I&apos;ll reply you back.</span>}
             </AnimatePresence>
 
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold rounded-md bg-sky-500/15 hover:bg-sky-500/25 disabled:opacity-50 disabled:cursor-not-allowed text-sky-400 border border-sky-500/25 transition-all"
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 text-xs font-mono font-semibold rounded-md bg-sky-500/15 hover:bg-sky-500/25 disabled:opacity-50 disabled:cursor-not-allowed text-sky-400 border border-sky-500/25 transition-all"
             >
               {status === 'sending' ?
                 <Loader2 size={13} className="animate-spin" />
@@ -154,13 +165,13 @@ export default function ContactMe() {
   );
 }
 
-// shared field styles — dark bg + blue focus ring
-const fieldCls = `
-  w-full rounded-md px-3 py-2 text-sm text-white/80 shadow-sm 
-  bg-[#0d1117] border border-white/8
-  placeholder:text-white/20
-  focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500/40
-  transition-all duration-200`;
+// shared field styles
+const fieldCls =
+  'w-full rounded-md px-3 py-2.5 text-sm text-white/80 ' +
+  'bg-[#0d1117] border border-white/[0.08] ' +
+  'placeholder:text-white/20 ' +
+  // 'focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500/40 ' +
+  'transition-all duration-200';
 
 function FormField({
   label,
