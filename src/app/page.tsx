@@ -7,6 +7,7 @@ import Skills from '@/components/body/Skills';
 import Projects from '@/components/body/Project/Projects';
 
 import { getContributionGraph, getPinnedRepos, getRepos } from '@/lib/github';
+import ContactMe from '@/components/body/ContactMe';
 
 export default async function Home() {
   const pinnedRepos = await getPinnedRepos();
@@ -62,6 +63,9 @@ export default async function Home() {
 
           {/* Projects */}
           <Projects />
+
+          {/* Contact */}
+          <ContactMe />
         </div>
       </div>
 

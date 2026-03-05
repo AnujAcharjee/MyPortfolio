@@ -13,3 +13,10 @@ export const SKILL_WORDS = [
   { text: 'work', className: wordClass },
   { text: 'with', className: wordClass },
 ];
+
+export const CONTACT_WORDS = [
+  { text: '>', className: wordClass },
+  { text: 'get', className: wordClass },
+  { text: 'in', className: wordClass },
+  { text: 'touch', className: wordClass },
+];
