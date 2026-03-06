@@ -5,11 +5,14 @@ import { MapPin } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section className='flex flex-col items-center justify-center text-center'>
+    <section className="flex flex-col items-center justify-center text-center">
       <Image src={ImgLink.avatar} alt="User avatar" width={250} height={250} className="rounded-full" />
 
       <div className="my-5 font-sans pb-2 border-b border-white/30">
-        <p className="font-bold text-3xl">Anuj</p>
+        <p className="font-bold text-3xl">
+          Anuj
+          <i className="bi bi-patch-check-fill px-2 text-2xl bg-linear-to-br from-white via-yellow-400 to-amber-500/80 bg-clip-text text-transparent hover:shadow-amber-400"></i>
+        </p>
         <p className="font-mono text-gray-500">AnujAcharjee · he/him</p>
         <p className="flex gap-x-1 justify-center items-center font-mono text-gray-500">
           <MapPin size={14} />
