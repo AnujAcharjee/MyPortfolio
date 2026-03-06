@@ -8,7 +8,7 @@ import type { NormalizedRepo } from '@/types/github';
 export default function RepoGridItem({ repo }: { repo: NormalizedRepo }) {
   return (
     <li className="list-none">
-      <div className="relative h-full rounded-xl border p-1 shadow-inner shadow-white/10">
+      <div className="relative h-full rounded-xl border p-1">
         <GlowingEffect
           blur={0}
           borderWidth={3}
@@ -21,7 +21,7 @@ export default function RepoGridItem({ repo }: { repo: NormalizedRepo }) {
 
         <div
           onClick={() => window.open(repo.url, '_blank')}
-          className="relative flex h-full flex-col rounded-lg p-3 dark:shadow-[0_0_20px_#2D2D2D] cursor-pointer"
+          className="relative flex h-full flex-col rounded-lg p-3 shadow-[0_0_20px_#2D2D2D] cursor-pointer"
         >
           {/* Top */}
           <div className="space-y-2">

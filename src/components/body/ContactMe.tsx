@@ -67,7 +67,7 @@ export default function ContactMe() {
       <HoverBorderGradient
         containerClassName="w-full rounded-2xl bg-card"
         as="div"
-        className="w-full rounded-2xl overflow-hidden bg-card"
+        className="w-full rounded-2xl overflow-hidden bg-card p-3 shadow-[0_0_20px_#2D2D2D]"
       >
         {/* Top bar */}
         <div className="flex items-center gap-1.5 px-4 sm:px-5 py-3">

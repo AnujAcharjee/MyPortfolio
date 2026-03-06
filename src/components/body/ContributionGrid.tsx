@@ -75,7 +75,7 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
       </div>
 
       {/* Card */}
-      <div className="relative border border-white/10 rounded-2xl bg-card overflow-hidden">
+      <div className="relative border border-white/10 rounded-2xl bg-card overflow-hidden p-3 shadow-[0_0_20px_#2D2D2D]">
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-5 pb-3">
           <div className="flex items-center gap-2.5">

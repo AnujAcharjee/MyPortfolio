@@ -41,7 +41,7 @@ export default function Projects() {
       <HoverBorderGradient
         containerClassName="w-full max-w-4xl rounded-2xl p-[1px]"
         as="div"
-        className="rounded-2xl bg-card overflow-hidden w-full"
+        className="rounded-2xl bg-card overflow-hidden w-full p-3 shadow-[0_0_20px_#2D2D2D]"
       >
         <div className="w-full rounded-2xl overflow-hidden">
           {/* Column headers */}
