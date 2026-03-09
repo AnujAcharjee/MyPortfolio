@@ -1,7 +1,6 @@
 import {
   NormalizedRepo,
   Repo,
-  PinnedRepo,
   GraphQLResponse,
   ContributionCalendar,
   ContributionGraphResponse,
@@ -112,6 +111,11 @@ export async function getContributionGraph(): Promise<ContributionCalendar> {
   }
 
   const json: ContributionGraphResponse = await res.json();
+
+  if (!json.data) {
+    console.error('GitHub API error:', json);
+    throw new Error('GitHub GraphQL failed');
+  }
 
   return json.data.viewer.contributionsCollection.contributionCalendar;
 }

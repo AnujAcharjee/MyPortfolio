@@ -1,7 +1,6 @@
 'use client';
 
 import { ContributionWeek } from '@/types/github';
-import { CONTRIBUTION_COLORS } from '@/constants/colors';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { useMemo, useRef, useState, useEffect } from 'react';
 import { BookMarked } from 'lucide-react';
@@ -12,6 +11,16 @@ interface ContributionGridProps {
 
 const DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const GITHUB_COLORS: Record<string, string> = {
+  NONE: 'bg-[#161b22] border border-[#1e2530]',
+  FIRST_QUARTILE: 'bg-[#0e4429]',
+  SECOND_QUARTILE: 'bg-[#006d32]',
+  THIRD_QUARTILE: 'bg-[#26a641]',
+  FOURTH_QUARTILE: 'bg-[#39d353]',
+};
+
+const DAY_LABEL_WIDTH = 28;
 
 function buildMonthLabels(weeks: ContributionWeek[]) {
   const labels: { label: string; index: number }[] = [];
@@ -26,13 +35,9 @@ function buildMonthLabels(weeks: ContributionWeek[]) {
   return labels;
 }
 
-const DAY_LABEL_WIDTH = 28;
-
 export default function ContributionGrid({ weeks }: ContributionGridProps) {
   const [tooltip, setTooltip] = useState<{ text: string } | null>(null);
   const weeksRowRef = useRef<HTMLDivElement>(null);
-
-  // Real measured left-offsets of each week column, relative to weeksRowRef
   const [colPositions, setColPositions] = useState<number[]>([]);
 
   useEffect(() => {
@@ -61,7 +66,6 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
 
   return (
     <div className="relative w-full rounded-2xl">
-      {/* Glow — unchanged */}
       <div className="absolute inset-0 rounded-2xl pointer-events-none z-10">
         <GlowingEffect
           blur={0}
@@ -74,45 +78,35 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
         />
       </div>
 
-      {/* Card */}
       <div className="relative border border-white/10 rounded-2xl bg-card overflow-hidden p-3 shadow-[0_0_20px_#2D2D2D]">
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-5 pb-3">
           <div className="flex items-center gap-2.5">
             <BookMarked size={20} className="text-orange-500/50" />
-            <span
-              className="text-sm font-semibold text-white/80"
-              style={{ fontFamily: "'Space Mono', monospace" }}
-            >
-              Public Contributions
-            </span>
+            <span className="text-sm font-semibold text-white/80 font-mono">Public Contributions</span>
           </div>
           <span className="text-xs text-orange-400/80 font-mono tabular-nums">
             {totalContributions.toLocaleString()} this year
           </span>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-linear-to-r from-transparent via-white/10 to-transparent mx-5 mb-4" />
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mx-5 mb-4" />
 
         <div className="px-4 pb-5">
-          {/* Scroll on sm/md, fill on lg+ */}
           <div className="overflow-x-auto lg:overflow-visible scrollbar-hide">
             <div className="relative" style={{ minWidth: `${weeks.length * 14 + 32}px` }}>
-              {/* ── Month labels ── */}
-              {/* Offset by DAY_LABEL_WIDTH so labels align over their week columns */}
-              <div className="relative h-5 mb-1" style={{ paddingLeft: `${DAY_LABEL_WIDTH}px` }}>
+              {/* Month labels */}
+              <div className="relative h-5 mb-1">
                 {monthLabels.map(({ label, index }) => {
-                  // Use real measured position when available (accounts for flex stretching on large screens)
                   const left =
                     colPositions.length > 0 && colPositions[index] !== undefined ?
-                      colPositions[index]
-                    : index * 14; // fallback before first measure
+                      colPositions[index] + DAY_LABEL_WIDTH
+                    : index * 14 + DAY_LABEL_WIDTH;
                   return (
                     <span
                       key={`${label}-${index}`}
-                      className="absolute text-[10px] text-zinc-500 select-none whitespace-nowrap"
-                      style={{ left: `${left}px`, fontFamily: "'Space Mono', monospace" }}
+                      className="absolute text-[10px] text-[#7d8590] select-none whitespace-nowrap font-mono"
+                      style={{ left: `${left}px` }}
                     >
                       {label}
                     </span>
@@ -120,33 +114,25 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
                 })}
               </div>
 
-              {/* ── Day labels + week grid ── */}
+              {/* Day labels + grid */}
               <div className="flex">
-                {/* Day-of-week labels */}
-                <div
-                  className="flex flex-col justify-between pr-2 shrink-0"
-                  style={{ width: `${DAY_LABEL_WIDTH}px`, paddingTop: '1px' }}
-                >
+                {/* Day labels */}
+                <div className="flex flex-col justify-between pr-2 pt-px shrink-0 w-7">
                   {DAY_LABELS.map((d, i) => (
                     <div
                       key={i}
-                      className="text-[9px] text-zinc-600 leading-none select-none"
-                      style={{
-                        height: '11px',
-                        lineHeight: '11px',
-                        fontFamily: "'Space Mono', monospace",
-                        visibility: i % 2 === 0 ? 'visible' : 'hidden',
-                      }}
+                      className="text-[9px] text-[#7d8590] leading-none select-none h-[11px] font-mono"
+                      style={{ visibility: i % 2 === 0 ? 'visible' : 'hidden' }}
                     >
                       {d}
                     </div>
                   ))}
                 </div>
 
-                {/* Week columns — ref'd so we can measure their positions */}
-                <div ref={weeksRowRef} className="flex gap-0.75 xl:gap-1 flex-1">
+                {/* Week columns */}
+                <div ref={weeksRowRef} className="flex gap-[3px] flex-1">
                   {weeks.map((week, wi) => (
-                    <div key={wi} className="flex flex-col gap-0.75 xl:gap-1 flex-1">
+                    <div key={wi} className="flex flex-col gap-[3px] flex-1">
                       {week.contributionDays.map((day) => (
                         <div
                           key={day.date}
@@ -157,10 +143,9 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
                           }
                           onMouseLeave={() => setTooltip(null)}
                           className={[
-                            'w-full aspect-square max-w-3.5',
-                            'rounded-xs',
-                            CONTRIBUTION_COLORS[day.contributionLevel],
-                            'transition-all duration-150 hover:scale-[1.35] hover:rounded-sm cursor-pointer',
+                            'w-full aspect-square max-w-[11px] rounded-xs',
+                            GITHUB_COLORS[day.contributionLevel],
+                            'transition-all duration-150 hover:scale-125 cursor-pointer',
                           ].join(' ')}
                         />
                       ))}
@@ -171,30 +156,25 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
             </div>
           </div>
 
-          {/* Footer: inline tooltip + legend */}
+          {/* Footer: tooltip + legend */}
           <div className="flex items-center justify-between mt-4">
             <div
-              className="text-[11px] text-zinc-400 min-h-4 transition-opacity duration-150"
-              style={{ fontFamily: "'Space Mono', monospace", opacity: tooltip ? 1 : 0 }}
+              className={[
+                'text-[11px] text-[#7d8590] min-h-4 font-mono transition-opacity duration-150',
+                tooltip ? 'opacity-100' : 'opacity-0',
+              ].join(' ')}
             >
               {tooltip?.text ?? ''}
             </div>
 
             <div className="flex items-center gap-1.5 shrink-0">
-              <span className="text-[10px] text-zinc-600" style={{ fontFamily: "'Space Mono', monospace" }}>
-                Less
-              </span>
+              <span className="text-[10px] text-[#7d8590] font-mono">Less</span>
               {(
                 ['NONE', 'FIRST_QUARTILE', 'SECOND_QUARTILE', 'THIRD_QUARTILE', 'FOURTH_QUARTILE'] as const
               ).map((level) => (
-                <div
-                  key={level}
-                  className={`w-2.5 h-2.5 xl:w-3 xl:h-3 rounded-xs ${CONTRIBUTION_COLORS[level]}`}
-                />
+                <div key={level} className={`size-[10px] xl:size-3 rounded-xs ${GITHUB_COLORS[level]}`} />
               ))}
-              <span className="text-[10px] text-zinc-600" style={{ fontFamily: "'Space Mono', monospace" }}>
-                More
-              </span>
+              <span className="text-[10px] text-[#7d8590] font-mono">More</span>
             </div>
           </div>
         </div>
