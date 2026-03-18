@@ -7,13 +7,12 @@ import Skills from '@/components/body/Skills';
 import Projects from '@/components/body/Project/Projects';
 
 import { getContributionGraph, getPinnedRepos, getRepos } from '@/lib/github';
-import ContactMe from '@/components/body/ContactMe';
 
 export default async function Home() {
   const pinnedRepos = await getPinnedRepos();
   const graph = await getContributionGraph();
   console.log(graph);
-  
+
   const repos = await getRepos();
 
   return (
@@ -32,10 +31,7 @@ export default async function Home() {
         "
       >
         {/* LEFT - Fixed on md+ */}
-        <main
-          id="about"
-          className="w-full md:w-1/3 md:sticky md:top-12 md:h-screen"
-        >
+        <main id="about" className="w-full md:w-1/3 md:sticky md:top-12 md:h-screen">
           <HeroSection />
         </main>
 
@@ -65,9 +61,6 @@ export default async function Home() {
 
           {/* Projects */}
           <Projects />
-
-          {/* Contact */}
-          <ContactMe />
         </div>
       </div>
 

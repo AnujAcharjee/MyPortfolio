@@ -30,7 +30,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="work" className="max-h-[90svh] flex flex-col items-start gap-4 px-2">
+    <section id="work" className=" flex flex-col items-start gap-4 px-2">
       {/* Header */}
       <TypewriterEffect words={PROJECT_WORDS} cursorClassName="!h-3 !w-0.5 sm:!h-4" />
 

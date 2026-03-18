@@ -82,15 +82,15 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-5 pb-3">
           <div className="flex items-center gap-2.5">
-            <BookMarked size={20} className="text-orange-500/50" />
-            <span className="text-sm font-semibold text-white/80 font-mono">Public Contributions</span>
+            <BookMarked size={20} className="text-amber-400" />
+            <span className="text-sm font-semibold text-white/80 font-mono">Contributions</span>
           </div>
-          <span className="text-xs text-orange-400/80 font-mono tabular-nums">
+          <span className="text-xs text-amber-400 font-mono tabular-nums">
             {totalContributions.toLocaleString()} this year
           </span>
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mx-5 mb-4" />
+        <div className="h-px bg-linear-to-r from-transparent via-white/10 to-transparent mx-5 mb-4" />
 
         <div className="px-4 pb-5">
           <div className="overflow-x-auto lg:overflow-visible scrollbar-hide">

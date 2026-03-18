@@ -2,13 +2,11 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, CheckCircle, XCircle, Loader2 } from 'lucide-react';
+import { Send, CheckCircle, XCircle, Loader2, CircleX } from 'lucide-react';
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { TypewriterEffect } from '@/components/ui/typewriter-effect';
-import { CONTACT_WORDS } from '@/constants/typewriterWords';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
@@ -23,7 +21,11 @@ const STATUS_CONFIG: Record<Status, { label: string; icon: React.ReactNode; colo
   error: { label: 'Failed to send. Try again.', icon: <XCircle size={13} />, color: 'text-red-400/80' },
 };
 
-export default function ContactMe() {
+interface ContactFormProps {
+  onClose: () => void;
+}
+
+export function ContactForm({ onClose }: ContactFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -60,20 +62,32 @@ export default function ContactMe() {
   const feedback = STATUS_CONFIG[status];
 
   return (
-    <div id="contact" className="w-full flex flex-col items-start gap-4 px-2 sm:py-10">
-      {/* Header — unchanged */}
-      <TypewriterEffect words={CONTACT_WORDS} cursorClassName="!h-3 !w-0.5 sm:!h-4" />
-
+    <div className="w-full">
       <HoverBorderGradient
-        containerClassName="w-full rounded-2xl bg-card"
+        containerClassName="w-full h-fit rounded-2xl bg-card"
         as="div"
         className="w-full rounded-2xl overflow-hidden bg-card p-3 shadow-[0_0_20px_#2D2D2D]"
       >
         {/* Top bar */}
-        <div className="flex items-center gap-1.5 px-4 sm:px-5 py-3">
+        <div className="relative flex items-center gap-1.5 px-4 sm:px-5 py-3">
           <div className="w-2 h-2 rounded-full bg-red-400" />
           <div className="w-2 h-2 rounded-full bg-yellow-400" />
           <div className="w-2 h-2 rounded-full bg-green-400" />
+
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="lg:hidden absolute top-1/2 -translate-y-1/2 right-3 z-20
+                flex items-center justify-center
+                p-2 rounded-full
+                bg-black/60 backdrop-blur
+                border border-white/20
+                hover:bg-red-500/80 hover:border-red-400
+                transition-colors"
+            >
+              <CircleX size={18} className="text-white" />
+            </button>
+          )}
         </div>
 
         <form onSubmit={handleSubmit} autoComplete="off" className="flex flex-col gap-7 px-6 py-8">
@@ -88,7 +102,7 @@ export default function ContactMe() {
           />
 
           {/* Name + Email */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <FormField label="Name" htmlFor="name">
               <Input
                 id="name"
@@ -118,11 +132,11 @@ export default function ContactMe() {
           <FormField label="Message" htmlFor="message">
             <textarea
               id="message"
-              placeholder="What's on your mind..."
+              placeholder="Write your message..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
-              rows={6}
+              rows={4}
               className={cn(fieldCls, 'resize-none leading-relaxed')}
             />
           </FormField>
@@ -165,12 +179,10 @@ export default function ContactMe() {
   );
 }
 
-// shared field styles
 const fieldCls =
   'w-full rounded-md px-3 py-2.5 text-sm text-white/80 ' +
   'bg-[#0d1117] border border-white/[0.08] ' +
   'placeholder:text-white/20 ' +
-  // 'focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500/40 ' +
   'transition-all duration-200';
 
 function FormField({

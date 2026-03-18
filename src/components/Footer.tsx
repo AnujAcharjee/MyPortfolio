@@ -67,15 +67,12 @@ export default function Footer() {
 
       {/* Bottom strip */}
       <div className="border-t border-white/5 py-3">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 flex flex-col sm:flex-row items-center justify-center gap-2">
           <p
             className="text-[10px] text-zinc-700 tracking-widest uppercase"
             style={{ fontFamily: "'Space Mono', monospace" }}
           >
             © {new Date().getFullYear()} Anuj Acharjee
-          </p>
-          <p className="text-[10px] text-zinc-700" style={{ fontFamily: "'Space Mono', monospace" }}>
-            Built with Next.js, Aceternity UI &amp; 🍵
           </p>
         </div>
       </div>
