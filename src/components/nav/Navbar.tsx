@@ -34,10 +34,11 @@ export default function Navbar({ numRepos }: { numRepos: number }) {
             <Menu color="#8a8a8a" size={20} />
           </div>
 
-          <i className="bi bi-github text-2xl cursor-not-allowed"></i>
+          <i className="bi bi-mortarboard-fill text-2xl"></i>
+          {/* <i className="bi bi-github text-2xl cursor-not-allowed"></i> */}
 
           <div>
-            <span className="hidden sm:block font-bold text-md hover:text-white/70 cursor-not-allowed">
+            <span className="hidden sm:block font-bold text-md hover:text-white/70">
               AnujAcharjee
             </span>
           </div>

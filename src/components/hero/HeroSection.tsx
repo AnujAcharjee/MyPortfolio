@@ -19,10 +19,11 @@ export default function HeroSection() {
         <div
           className="
           absolute inset-0 rounded-full
-          bg-linear-to-br from-amber-400/40 via-yellow-300/20 to-transparent
+          bg-linear-to-br from-blue-400/40 via-cyan-400/25 to-transparent
           blur-md scale-110
         "
         />
+
         <Image
           src={ImgLink.avatar}
           alt="Anuj's avatar"
