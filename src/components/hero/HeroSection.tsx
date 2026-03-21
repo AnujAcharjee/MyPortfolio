@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ImgLink } from '@/constants/imageLinks';
 import { MapPin } from 'lucide-react';
 import { SocialSection } from '@/components/hero/SocialSection';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 export default function HeroSection() {
   return (
@@ -12,32 +13,48 @@ export default function HeroSection() {
       overflow-hidden
     "
     >
-      {/* Subtle ambient glow behind avatar */}
-
       {/* Avatar */}
       <div className="relative mb-6 sm:mb-8">
+        {/* Background Glow */}
         <div
           className="
           absolute inset-0 rounded-full
-          bg-linear-to-br from-blue-400/40 via-cyan-400/25 to-transparent
+          bg-linear-to-br 
+          from-blue-400/40 via-cyan-400/25 to-transparent
           blur-md scale-110
+          sm:blur-lg sm:scale-105 sm:from-blue-400/35 sm:via-cyan-400/20
+          md:blur-lg md:scale-100 md:from-blue-400/30 md:via-cyan-400/15
+          lg:blur-md lg:scale-100 lg:from-blue-400/20 lg:via-cyan-400/10
         "
         />
 
-        <Image
-          src={ImgLink.avatar}
-          alt="Anuj's avatar"
-          width={200}
-          height={200}
-          className="
+        {/* Foreground Container */}
+        <div className="relative rounded-full">
+          <GlowingEffect
+            blur={0}
+            borderWidth={3}
+            spread={80}
+            glow={true}
+            disabled={false}
+            proximity={64}
+            inactiveZone={0.01}
+          />
+          <Image
+            src={ImgLink.avatar}
+            alt="avatar"
+            width={200}
+            height={200}
+            className="
             relative rounded-full
             w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48
             object-cover
             ring-2 ring-white/10
             shadow-2xl shadow-black/40
+            border border-white/10
           "
-          priority
-        />
+            priority
+          />
+        </div>
       </div>
 
       <div className="flex flex-col gap-4 my-5 font-sans pb-2 border-b border-white/30">

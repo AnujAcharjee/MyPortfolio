@@ -11,7 +11,6 @@ import { getContributionGraph, getPinnedRepos, getRepos } from '@/lib/github';
 export default async function Home() {
   const pinnedRepos = await getPinnedRepos();
   const graph = await getContributionGraph();
-  console.log(graph);
 
   const repos = await getRepos();
 
