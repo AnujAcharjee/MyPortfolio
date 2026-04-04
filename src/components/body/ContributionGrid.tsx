@@ -82,10 +82,10 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-5 pb-3">
           <div className="flex items-center gap-2.5">
-            <BookMarked size={20} className="text-amber-400" />
+            <BookMarked size={20} className="text-rose-gold" />
             <span className="text-sm font-semibold text-white/80 font-mono">Contributions</span>
           </div>
-          <span className="text-xs text-amber-400 font-mono tabular-nums">
+          <span className="text-xs text-soft-gold font-mono tabular-nums">
             {totalContributions.toLocaleString()} this year
           </span>
         </div>

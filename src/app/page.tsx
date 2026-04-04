@@ -23,7 +23,7 @@ export default async function Home() {
           w-full
           px-4 sm:px-6 lg:px-10
           py-8
-          bg-card
+          bg-background 
           flex flex-col
           md:flex-row
           gap-8

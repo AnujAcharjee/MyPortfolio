@@ -165,7 +165,7 @@ export function ContactForm({ onClose }: ContactFormProps) {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 text-xs font-mono font-semibold rounded-md bg-sky-500/15 hover:bg-sky-500/25 disabled:opacity-50 disabled:cursor-not-allowed text-sky-400 border border-sky-500/25 transition-all"
+              className="flex  items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 text-xs font-mono font-semibold rounded-md bg-sky-500/15 hover:bg-sky-500/25 disabled:opacity-50 disabled:cursor-not-allowed text-sky-400 border border-sky-500/25 transition-all"
             >
               {status === 'sending' ?
                 <Loader2 size={13} className="animate-spin" />
@@ -181,7 +181,7 @@ export function ContactForm({ onClose }: ContactFormProps) {
 
 const fieldCls =
   'w-full rounded-md px-3 py-2.5 text-sm text-white/80 ' +
-  'bg-[#0d1117] border border-white/[0.08] ' +
+  'bg-gray-800 border border-white/[0.08] ' +
   'placeholder:text-white/20 ' +
   'transition-all duration-200';
 

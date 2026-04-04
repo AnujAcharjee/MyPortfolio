@@ -21,7 +21,7 @@ export default function RepoGridItem({ repo }: { repo: NormalizedRepo }) {
 
         <div
           onClick={() => window.open(repo.url, '_blank')}
-          className="relative flex h-full flex-col rounded-lg p-3 shadow-[0_0_20px_#2D2D2D] cursor-pointer"
+          className="relative flex h-full flex-col bg-card rounded-lg p-3 shadow-[0_0_20px_#2D2D2D] cursor-pointer"
         >
           {/* Top */}
           <div className="space-y-2">

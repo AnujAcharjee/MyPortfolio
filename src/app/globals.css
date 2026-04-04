@@ -23,18 +23,20 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-soft-gold: var(--soft-gold);
+  --color-deep-gold: var(--deep-gold);
+  --color-rose-gold: var(--rose-gold);
   --radius: 0.625rem;
   --shadow-input:
-    0px 2px 3px -1px rgba(0, 0, 0, 0.1),
-    0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02),
     0px 0px 0px 1px rgba(25, 28, 33, 0.08);
 }
 
 :root {
-  --background: #0d1117;
+  --background: #010313f2;
   --foreground: #c9d1d9;
 
-  --card: #161b22;
+  --card: #030f1c;
   --card-foreground: #c9d1d9;
 
   --popover: #161b22;
@@ -57,6 +59,10 @@
   --border: #30363d;
   --input: #21262d;
   --ring: #58a6ff;
+
+  --soft-gold: #f5c842;
+  --deep-gold: #daa520;
+  --rose-gold: #b8860b;
 }
 
 @layer base {

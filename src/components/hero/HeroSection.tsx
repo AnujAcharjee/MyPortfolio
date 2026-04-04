@@ -42,8 +42,8 @@ export default function HeroSection() {
           <Image
             src={ImgLink.avatar}
             alt="avatar"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
             className="
             relative rounded-full
             w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48
@@ -64,7 +64,7 @@ export default function HeroSection() {
             {/* <i className="bi bi-patch-check-fill px-2 text-2xl bg-linear-to-br from-white via-yellow-400 to-amber-500/80 bg-clip-text text-transparent hover:shadow-amber-400"></i> */}
           </p>
           <div className="flex items-center justify-center gap-4 font-mono text-gray-500">
-            he/him
+            {/* he/him */}
             <span className="flex items-center justify-center gap-1">
               <MapPin size={14} />
               India
@@ -72,9 +72,9 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="text-xs sm:text-base">
+        <div className="text-[10px] sm:text-xs font-mono">
           <p>I make full-stack products that people love using.</p>
-          <p>I play, read, and drink coffee for fun.</p>
+          <p>I play, read and drink coffee for fun.</p>
         </div>
 
         <p className="font-mono text-xs sm:text-sm text-gray-500">

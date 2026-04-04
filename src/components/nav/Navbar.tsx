@@ -25,7 +25,7 @@ export default function Navbar({ numRepos }: { numRepos: number }) {
   ];
 
   return (
-    <header className="w-full bg-background">
+    <header className="w-full bg-card">
       {/* Top */}
       <div className="flex items-center justify-between h-12 px-6">
         {/* Left Section */}
@@ -34,13 +34,13 @@ export default function Navbar({ numRepos }: { numRepos: number }) {
             <Menu color="#8a8a8a" size={20} />
           </div>
 
-          <i className="bi bi-mortarboard-fill text-2xl"></i>
+          {/* <div className='px-1.5 py-0.5 border border-white/20 rounded-full hover:border-white/50'>
+            <i className="bi bi-mortarboard-fill text-xl"></i>
+          </div> */}
           {/* <i className="bi bi-github text-2xl cursor-not-allowed"></i> */}
 
           <div>
-            <span className="hidden sm:block font-bold text-md hover:text-white/70">
-              AnujAcharjee
-            </span>
+            <span className="hidden sm:block font-bold text-md hover:text-white/70">AnujAcharjee</span>
           </div>
         </section>
 

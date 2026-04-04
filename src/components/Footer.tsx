@@ -16,7 +16,7 @@ const LINKS = {
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/8 relative overflow-hidden">
+    <footer className="w-full bg-card border-t border-white/8 relative overflow-hidden">
       {/* Subtle ambient glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-24 bg-orange-500/5 blur-3xl pointer-events-none" />
 

@@ -4,4 +4,5 @@ export const ImgLink = {
   stockRush: '/stockRush.jpeg',
   wanderlust: '/wanderlust.png',
   amazonClone: '/amazon.png',
+  collab: '/collab.png'
 };

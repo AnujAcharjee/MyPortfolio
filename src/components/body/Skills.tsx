@@ -25,14 +25,14 @@ const SKILLS = [
     key: '03',
     label: 'Backend',
     icon: <Server size={14} />,
-    items: ['Express.js', 'MongoDB', 'PostgreSQL', 'Prisma', 'Redis'],
+    items: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Prisma', 'Redis'],
     accent: '#34d399',
   },
   {
     key: '04',
     label: 'DevOps & Infra',
     icon: <Wrench size={14} />,
-    items: ['Docker', 'Git & GitHub', 'GitHub Actions', 'Kafka', 'AWS'],
+    items: ['Docker', 'Git & GitHub', 'GitHub Actions', 'Postman', 'Kafka', 'AWS'],
     accent: '#f59e0b',
   },
 ];
