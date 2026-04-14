@@ -38,7 +38,13 @@ export function ProjectModal({ active, id, onClose }: ProjectModalProps) {
             >
               {/* Image */}
               <motion.div layoutId={`image-${active.title}-${id}`} className="relative w-full h-65 shrink-0">
-                <Image src={active.img} alt={active.title} fill className="object-cover object-top" />
+                <Image
+                  src={active.img}
+                  alt={active.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-top"
+                />
 
                 {/* overlay gradient */}
                 <div className="absolute inset-0 bg-linear-to-t from-[#0d1117] via-[#0d1117]/20 to-transparent" />
