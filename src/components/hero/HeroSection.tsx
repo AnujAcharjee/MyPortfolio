@@ -3,6 +3,7 @@ import { ImgLink } from '@/constants/imageLinks';
 import { MapPin } from 'lucide-react';
 import { SocialSection } from '@/components/hero/SocialSection';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { cn } from '@/lib/utils';
 
 export default function HeroSection() {
   return (
@@ -59,25 +60,25 @@ export default function HeroSection() {
 
       <div className="flex flex-col gap-4 my-5 font-sans pb-2 border-b border-white/30">
         <div className="flex flex-col gap-2">
-          <p className="font-bold text-3xl">
+          <p className="font-bold text-2xl sm:text-3xl">
             Anuj Acharjee
             {/* <i className="bi bi-patch-check-fill px-2 text-2xl bg-linear-to-br from-white via-yellow-400 to-amber-500/80 bg-clip-text text-transparent hover:shadow-amber-400"></i> */}
           </p>
-          <div className="flex items-center justify-center gap-4 font-mono text-gray-500">
+          <div className="flex items-center justify-center gap-4 font-mono text-white/60">
             {/* he/him */}
-            <span className="flex items-center justify-center gap-1">
-              <MapPin size={14} />
+            <span className="flex items-center justify-center gap-1 text-[11px] sm:text-sm">
+              <MapPin className='h-2.5 w-2.5 sm:h-4 sm:w-4' />
               India
             </span>
           </div>
         </div>
 
-        <div className="text-[10px] sm:text-xs font-mono">
+        <div className="text-[11px] sm:text-sm font-sans font-stretch-semi-expanded text-white/60">
           <p>I make full-stack products that people love using.</p>
           <p>I play, read and drink coffee for fun.</p>
         </div>
 
-        <p className="font-mono text-xs sm:text-sm text-gray-500">
+        <p className="font-mono text-xs sm:text-sm text-white/70">
           Developer · OSS contributor · Indie hacker · Student
         </p>
       </div>
