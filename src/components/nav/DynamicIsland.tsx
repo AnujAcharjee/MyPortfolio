@@ -72,7 +72,7 @@ export default function DynamicIsland() {
                   }}
                   className={`
                     relative px-3 py-1.5 rounded-full
-                    text-[11px] font-mono tracking-wide
+                    text-[9px] font-mono tracking-wide
                     transition-colors duration-200 whitespace-nowrap
                     ${active === item.href.replace('#', '') ? 'text-sky-300/90' : 'text-white/35 hover:text-white/65'}
                   `}
@@ -93,7 +93,7 @@ export default function DynamicIsland() {
                 }}
                 className="
                   px-2 py-1.5 rounded-full
-                  text-[11px] font-mono tracking-wide
+                  text-[9px] font-mono tracking-wide
                   text-blue-400/50 hover:text-blue-300
                   transition-colors duration-200
                   whitespace-nowrap cursor-pointer
