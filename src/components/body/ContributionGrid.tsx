@@ -94,7 +94,7 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
 
         <div className="px-4 pb-5">
           <div className="overflow-x-auto lg:overflow-visible scrollbar-hide">
-            <div className="relative" style={{ minWidth: `${weeks.length * 14 + 32}px` }}>
+            <div className="relative w-full" style={{ minWidth: `${weeks.length * 14 + 32}px` }}>
               {/* Month labels */}
               <div className="relative h-5 mb-1">
                 {monthLabels.map(({ label, index }) => {
@@ -121,7 +121,7 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
                   {DAY_LABELS.map((d, i) => (
                     <div
                       key={i}
-                      className="text-[9px] text-[#7d8590] leading-none select-none h-[11px] font-mono"
+                      className="text-[9px] text-[#7d8590] leading-none select-none h-2.75 font-mono"
                       style={{ visibility: i % 2 === 0 ? 'visible' : 'hidden' }}
                     >
                       {d}
@@ -130,9 +130,9 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
                 </div>
 
                 {/* Week columns */}
-                <div ref={weeksRowRef} className="flex gap-[3px] flex-1">
+                <div ref={weeksRowRef} className="flex gap-0.5 sm:gap-0.75 flex-1">
                   {weeks.map((week, wi) => (
-                    <div key={wi} className="flex flex-col gap-[3px] flex-1">
+                    <div key={wi} className="flex flex-col gap-0.75 flex-1">
                       {week.contributionDays.map((day) => (
                         <div
                           key={day.date}
@@ -143,7 +143,7 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
                           }
                           onMouseLeave={() => setTooltip(null)}
                           className={[
-                            'w-full aspect-square max-w-[11px] rounded-xs',
+                            'w-full aspect-square rounded-xs',
                             GITHUB_COLORS[day.contributionLevel],
                             'transition-all duration-150 hover:scale-125 cursor-pointer',
                           ].join(' ')}
@@ -172,7 +172,7 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
               {(
                 ['NONE', 'FIRST_QUARTILE', 'SECOND_QUARTILE', 'THIRD_QUARTILE', 'FOURTH_QUARTILE'] as const
               ).map((level) => (
-                <div key={level} className={`size-[10px] xl:size-3 rounded-xs ${GITHUB_COLORS[level]}`} />
+                <div key={level} className={`size-2.5 xl:size-3 rounded-xs ${GITHUB_COLORS[level]}`} />
               ))}
               <span className="text-[10px] text-[#7d8590] font-mono">More</span>
             </div>

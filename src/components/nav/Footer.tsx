@@ -45,14 +45,14 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsResumeActive(true)}
-              className="text-xs text-orange-400/60 hover:text-orange-400 transition-colors duration-200 tracking-wide cursor-pointer"
+              className="text-xs text-sky-400/60 hover:text-sky-400 transition-colors duration-200 tracking-wide cursor-pointer"
             >
               Resume
             </button>
 
             <button
               onClick={() => setIsContactActive(true)}
-              className="text-xs text-orange-400/60 hover:text-orange-400 transition-colors duration-200 tracking-wide cursor-pointer"
+              className="text-xs text-sky-400/60 hover:text-sky-400 transition-colors duration-200 tracking-wide cursor-pointer"
             >
               Connect
             </button>

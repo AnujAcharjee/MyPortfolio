@@ -3,7 +3,6 @@ import { ImgLink } from '@/constants/imageLinks';
 import { MapPin } from 'lucide-react';
 import { SocialSection } from '@/components/hero/SocialSection';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
-import { cn } from '@/lib/utils';
 
 export default function HeroSection() {
   return (
