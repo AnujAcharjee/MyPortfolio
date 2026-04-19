@@ -9,80 +9,76 @@ export default function HeroSection() {
   return (
     <section
       className="
-      relative flex flex-col items-center justify-center text-center
+      relative flex flex-col items-center justify-center gap-3 text-center
       px-4 py-6 sm:py-12 md:py-15 sm:min-h-0
       overflow-hidden
     "
     >
       {/* Avatar */}
-      <div className="relative mb-6 sm:mb-8">
-        {/* Background Glow */}
+      <div className="relative rounded-full">
+        {/* Outer glow ring */}
+        <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-xl scale-110" />
+
+        {/* Gradient border ring */}
         <div
-          className="
-          absolute inset-0 rounded-full
-          bg-linear-to-br 
-          from-blue-400/40 via-cyan-400/25 to-transparent
-          blur-md scale-110
-          sm:blur-lg sm:scale-105 sm:from-blue-400/35 sm:via-cyan-400/20
-          md:blur-lg md:scale-100 md:from-blue-400/30 md:via-cyan-400/15
-          lg:blur-md lg:scale-100 lg:from-blue-400/20 lg:via-cyan-400/10
-        "
+          className="absolute inset-0 rounded-full p-0.5"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(59,130,246,0.6), rgba(139,92,246,0.3), rgba(59,130,246,0.1))',
+            borderRadius: '9999px',
+          }}
         />
 
-        {/* Foreground Container */}
-        <div className="relative rounded-full">
-          <GlowingEffect
-            blur={0}
-            borderWidth={3}
-            spread={80}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <Image
-            src={ImgLink.avatar}
-            alt="avatar"
-            width={150}
-            height={150}
-            className="
+        <GlowingEffect
+          blur={0}
+          borderWidth={3}
+          spread={80}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+        />
+
+        {/* Avatar */}
+        <Image
+          src={ImgLink.avatar}
+          alt="avatar"
+          width={150}
+          height={150}
+          className="
             relative rounded-full
             w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48
             object-cover
             ring-2 ring-white/10
-            shadow-2xl shadow-black/40
-            border border-white/10
+            shadow-2xl shadow-black/60
           "
-            priority
-          />
-        </div>
+          priority
+        />
       </div>
 
-      <div className="flex flex-col gap-4 my-5 font-sans pb-2 border-b border-white/30">
-        <div className="flex flex-col gap-2">
-          <p className="font-bold text-2xl sm:text-3xl">
-            Anuj Acharjee
-            {/* <i className="bi bi-patch-check-fill px-2 text-2xl bg-linear-to-br from-white via-yellow-400 to-amber-500/80 bg-clip-text text-transparent hover:shadow-amber-400"></i> */}
-          </p>
-          <div className="flex items-center justify-center gap-4 font-mono text-white/60">
-            {/* he/him */}
-            <span className="flex items-center justify-center gap-1 text-[11px] sm:text-sm">
-              <MapPin className='h-2.5 w-2.5 sm:h-4 sm:w-4' />
-              India
-            </span>
+      <div className="flex flex-col gap-6 my-6 pb-4 border-b border-white/10 font-sans">
+        <div className="flex flex-col gap-1.5 items-center text-center">
+          <div className="flex flex-col items-start gap-0.5">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] font-mono text-white/30 tracking-widest italic">hi there!</span>
+              <span className="text-base">👋</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white leading-none">
+              <span className="text-white/30 font-light">{"I'm "}</span>Anuj Acharjee
+            </h1>
+          </div>
+
+          <div className="flex items-center justify-center gap-1.5 font-mono text-white/40 mt-5">
+            <MapPin className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" />
+            <span className="text-[11px] sm:text-xs tracking-wide">India</span>
           </div>
         </div>
 
-        <div className="text-[11px] sm:text-sm font-sans font-stretch-semi-expanded text-white/60">
-          <p>I make full-stack products that people love using.</p>
-          <p>I play, read and drink coffee for fun.</p>
+        <div className="text-center text-sm sm:text-[15px] text-white/55 leading-relaxed tracking-wide max-w-xs sm:max-w-sm mx-auto">
+          <p className="font-light">I make full-stack products that people love using.</p>
+          <p className="font-semibold">Developer · OSS contributor · Indie hacker · Student</p>
         </div>
-
-        <p className="font-mono text-xs sm:text-sm text-white/70">
-          Developer · OSS contributor · Indie hacker · Student
-        </p>
       </div>
-
       <div className="flex flex-col gap-4">
         <SocialSection />
 

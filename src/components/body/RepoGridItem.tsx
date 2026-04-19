@@ -29,9 +29,9 @@ export default function RepoGridItem({ repo }: { repo: NormalizedRepo }) {
               <div className="flex items-center gap-2">
                 <BookMarked size={16} />
                 <h3 className="font-semibold text-sky-500/70 dark:text-white truncate">{repo.name}</h3>
-                <span className="py-0.5 px-2 border border-white/20 text-xs font-semibold rounded-2xl shadow-inner shadow-white/10">
+                {/* <span className="py-0.5 px-2 border border-white/20 text-xs font-semibold rounded-2xl shadow-inner shadow-white/10">
                   Public
-                </span>
+                </span> */}
               </div>
               <ArrowUpRight className="w-4 h-4 text-neutral-500" />
             </div>

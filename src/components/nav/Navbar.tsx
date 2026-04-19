@@ -25,9 +25,9 @@ export default function Navbar({ numRepos }: { numRepos: number }) {
   ];
 
   return (
-    <header className="w-full bg-card">
+    <header className="hidden sm:block w-full bg-card">
       {/* Top */}
-      <div className="flex items-center justify-between h-12 px-6">
+      <div className="flex items-center justify-between px-6 py-3">
         {/* Left Section */}
         <section className="flex items-center gap-4">
           <div className="p-1 border border-white/20 rounded-sm hover:border-white/50 cursor-not-allowed">
@@ -40,7 +40,7 @@ export default function Navbar({ numRepos }: { numRepos: number }) {
           {/* <i className="bi bi-github text-2xl cursor-not-allowed"></i> */}
 
           <div>
-            <span className="hidden sm:block font-bold text-md hover:text-white/70">AnujAcharjee</span>
+            <span className="font-bold text-md hover:text-white/70">AnujAcharjee</span>
           </div>
         </section>
 
