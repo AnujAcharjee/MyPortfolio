@@ -1,8 +1,9 @@
 export const ImgLink = {
-  avatar: '/avatar.jpeg',
+  avatar: '/avatarloofy.jpg',
   pramman: '/pramaan.png',
-  stockRush: '/stockRush.jpeg',
+  stockRush: '/stockRush.png',
   wanderlust: '/wanderlust.png',
   amazonClone: '/amazon.png',
-  collab: '/collab.png'
+  collab: '/collab.png',
+  todoSpaces: '/todospaces.png'
 };

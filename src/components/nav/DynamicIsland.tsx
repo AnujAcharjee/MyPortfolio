@@ -6,14 +6,14 @@ import { ContactMeModal } from '@/components/body/ContactMe/ContactMeModal';
 import { useActiveSection } from '@/hooks/use-active-section';
 
 const navItems = [
-  { label: 'About', href: '#about' },
+  { label: 'Pinned', href: '#pinned' },
   { label: 'Work', href: '#work' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'Toolkit', href: '#skills' },
 ];
 
 export default function DynamicIsland() {
   const [expanded, setExpanded] = useState(false);
-  const active = useActiveSection(['about', 'work', 'skills']);
+  const active = useActiveSection(['pinned', 'work', 'skills']);
   const [isContactActive, setIsContactActive] = useState(false);
   const islandRef = useRef<HTMLDivElement>(null);
 
@@ -86,21 +86,38 @@ export default function DynamicIsland() {
 
               <span className="w-px h-3.5 bg-sky-400/10 shrink-0 mx-0.5" />
 
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsContactActive(true);
-                }}
-                className="
-                  px-2 py-1.5 rounded-full
-                  text-[9px] font-mono tracking-wide
-                  text-blue-400/50 hover:text-blue-300
-                  transition-colors duration-200
-                  whitespace-nowrap cursor-pointer
-                "
-              >
-                Connect
-              </button>
+              <div className="flex items-center gap-3 px-1">
+                <a
+                  href="https://github.com/AnujAcharjee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-sky-400/50 hover:text-sky-300 transition-colors duration-200 flex items-center"
+                  title="GitHub"
+                >
+                  <i className="bi bi-github text-[11px]" />
+                </a>
+                <a
+                  href="https://x.com/anuj_400"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-sky-400/50 hover:text-sky-300 transition-colors duration-200 flex items-center"
+                  title="Twitter/X"
+                >
+                  <i className="bi bi-twitter-x text-[10px]" />
+                </a>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsContactActive(true);
+                  }}
+                  className="text-sky-400/50 hover:text-sky-300 transition-colors duration-200 cursor-pointer flex items-center"
+                  title="Contact Me"
+                >
+                  <i className="bi bi-envelope-at-fill text-[11px]" />
+                </button>
+              </div>
 
               <span className="w-px h-3.5 bg-sky-400/10 shrink-0 mx-0.5" />
 

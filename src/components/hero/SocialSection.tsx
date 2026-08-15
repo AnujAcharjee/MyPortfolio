@@ -25,7 +25,7 @@ export function SocialSection() {
   }, []);
 
   return (
-    <div id="contact" className="flex gap-8 text-3xl text-gray-500">
+    <div id="contact" className="flex items-center gap-3">
       {SOCIAL_LINKS.map((item, index) =>
         item.url ?
           <a
@@ -33,16 +33,43 @@ export function SocialSection() {
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition"
+            className="
+              flex items-center justify-center
+              w-9 h-9 rounded-full
+              text-white/30 text-base
+              border border-white/8
+              hover:text-white hover:border-white/20 hover:bg-white/5
+              transition-all duration-200
+            "
           >
             <i className={item.icon} />
           </a>
-        : <div key={index} className="cursor-not-allowed">
+        : <div
+            key={index}
+            className="
+              flex items-center justify-center
+              w-9 h-9 rounded-full
+              text-white/15 text-base
+              border border-white/5
+              cursor-not-allowed
+            "
+          >
             <i className={item.icon} />
           </div>,
       )}
 
-      <button onClick={() => setIsActive(true)} className="hover:text-white transition cursor-pointer">
+      <button
+        onClick={() => setIsActive(true)}
+        className="
+          flex items-center justify-center
+          w-9 h-9 rounded-full
+          text-white/30 text-base
+          border border-white/8
+          hover:text-white hover:border-white/20 hover:bg-white/5
+          transition-all duration-200
+          cursor-pointer
+        "
+      >
         <i className="bi bi-envelope-at-fill" />
       </button>
 

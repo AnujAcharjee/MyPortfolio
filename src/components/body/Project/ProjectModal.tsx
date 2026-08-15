@@ -104,6 +104,18 @@ export function ProjectModal({ active, id, onClose }: ProjectModalProps) {
                           <SquareArrowOutUpRight size={12} />
                         </motion.a>
                       )}
+
+                      {active.videoLink && (
+                        <motion.a
+                          layoutId={`video-${active.title}-${id}`}
+                          href={active.videoLink}
+                          target="_blank"
+                          className="flex items-center gap-2 p-2 text-xs rounded-md font-mono font-semibold bg-rose-500/15 hover:bg-rose-500/25 text-rose-400 border border-rose-500/25 transition-colors"
+                        >
+                          <span>VIDEO</span>
+                          <SquareArrowOutUpRight size={12} />
+                        </motion.a>
+                      )}
                     </div>
                   </div>
 
@@ -123,7 +135,7 @@ export function ProjectModal({ active, id, onClose }: ProjectModalProps) {
                   layoutId={`description-${active.title}-${id}`}
                   className="mt-2 text-[10px] font-mono text-emerald-400 tracking-widest uppercase"
                 >
-                  The Backstory
+                  // THE ORIGIN STORY
                 </motion.div>
 
                 {/* Content */}

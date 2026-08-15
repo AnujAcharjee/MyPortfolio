@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://anujacharjee.com"),
   title: "Anuj Acharjee | Portfolio",
-  description: "Full-stack developer portfolio showcasing projects, skills, and contributions.",
+  description: "Full-stack developer portfolio showcasing projects, toolkit, and contributions.",
 
   openGraph: {
     title: "Anuj Acharjee | Portfolio",
-    description: "Full-stack developer portfolio showcasing projects, skills, and contributions.",
+    description: "Full-stack developer portfolio showcasing projects, toolkit, and contributions.",
     url: "https://anujacharjee.com",
     images: ["/og-image.png"],
   },
@@ -53,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-mono antialiased`}
       >
         {children}
       </body>

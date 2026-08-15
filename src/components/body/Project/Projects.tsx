@@ -45,7 +45,7 @@ export default function Projects() {
       >
         <div className="w-full rounded-2xl overflow-hidden">
           {/* Column headers */}
-          <div className="hidden md:grid grid-cols-[2rem_2.5rem_1fr_auto] gap-4 px-5 py-2 border-b border-white/5 text-[10px] font-mono text-white/20 uppercase tracking-widest">
+          <div className="hidden lg:grid grid-cols-[2rem_2.5rem_1fr_auto] gap-4 px-5 py-2 border-b border-white/5 text-[10px] font-mono text-white/20 uppercase tracking-widest">
             <span>idx</span>
             <span>thumb</span>
             <span>product</span>

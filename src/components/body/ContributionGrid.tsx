@@ -20,16 +20,18 @@ const GITHUB_COLORS: Record<string, string> = {
   FOURTH_QUARTILE: 'bg-[#39d353]',
 };
 
-const DAY_LABEL_WIDTH = 28;
+
 
 function buildMonthLabels(weeks: ContributionWeek[]) {
   const labels: { label: string; index: number }[] = [];
   let lastMonth = -1;
   weeks.forEach((week, i) => {
-    const month = new Date(week.contributionDays[0].date).getMonth();
-    if (month !== lastMonth) {
-      labels.push({ label: MONTHS[month], index: i });
-      lastMonth = month;
+    if (week.contributionDays && week.contributionDays.length > 0) {
+      const month = new Date(week.contributionDays[0].date).getMonth();
+      if (month !== lastMonth) {
+        labels.push({ label: MONTHS[month], index: i });
+        lastMonth = month;
+      }
     }
   });
   return labels;
@@ -93,19 +95,19 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
         <div className="h-px bg-linear-to-r from-transparent via-white/10 to-transparent mx-5 mb-4" />
 
         <div className="px-4 pb-5">
-          <div className="overflow-x-auto lg:overflow-visible scrollbar-hide">
-            <div className="relative w-full" style={{ minWidth: `${weeks.length * 14 + 32}px` }}>
+          <div className="overflow-visible scrollbar-hide">
+            <div className="relative w-full">
               {/* Month labels */}
-              <div className="relative h-5 mb-1">
+              <div className="relative h-5 mb-1 sm:pl-7">
                 {monthLabels.map(({ label, index }) => {
                   const left =
-                    colPositions.length > 0 && colPositions[index] !== undefined ?
-                      colPositions[index] + DAY_LABEL_WIDTH
-                    : index * 14 + DAY_LABEL_WIDTH;
+                    colPositions.length > 0 && colPositions[index] !== undefined
+                      ? colPositions[index]
+                      : 0;
                   return (
                     <span
                       key={`${label}-${index}`}
-                      className="absolute text-[10px] text-[#7d8590] select-none whitespace-nowrap font-mono"
+                      className="absolute text-[8px] sm:text-[10px] text-[#7d8590] select-none whitespace-nowrap"
                       style={{ left: `${left}px` }}
                     >
                       {label}
@@ -117,7 +119,7 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
               {/* Day labels + grid */}
               <div className="flex">
                 {/* Day labels */}
-                <div className="flex flex-col justify-between pr-2 pt-px shrink-0 w-7">
+                <div className="hidden sm:flex flex-col justify-between pr-2 pt-px shrink-0 w-7">
                   {DAY_LABELS.map((d, i) => (
                     <div
                       key={i}
@@ -130,9 +132,9 @@ export default function ContributionGrid({ weeks }: ContributionGridProps) {
                 </div>
 
                 {/* Week columns */}
-                <div ref={weeksRowRef} className="flex gap-0.5 sm:gap-0.75 flex-1">
+                <div ref={weeksRowRef} className="flex gap-px sm:gap-0.5 lg:gap-0.75 flex-1">
                   {weeks.map((week, wi) => (
-                    <div key={wi} className="flex flex-col gap-0.75 flex-1">
+                    <div key={wi} className="flex flex-col gap-px sm:gap-0.5 lg:gap-0.75 flex-1">
                       {week.contributionDays.map((day) => (
                         <div
                           key={day.date}

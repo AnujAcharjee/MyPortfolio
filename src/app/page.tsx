@@ -1,11 +1,11 @@
 import Navbar from '@/components/nav/Navbar';
 import HeroSection from '@/components/hero/HeroSection';
-import Footer from '@/components/nav/Footer';
 import RepoGridItem from '@/components/body/RepoGridItem';
 import ContributionGrid from '@/components/body/ContributionGrid';
 import Skills from '@/components/body/Skills';
 import Projects from '@/components/body/Project/Projects';
 import DynamicIsland from '@/components/nav/DynamicIsland';
+import ConnectText from '@/components/body/ConnectText';
 
 import { getContributionGraph, getPinnedRepos, getRepos } from '@/lib/github';
 
@@ -16,18 +16,20 @@ export default async function Home() {
   const repos = await getRepos();
 
   return (
-    <div>
+    <div className="flex flex-col lg:h-screen lg:overflow-hidden">
       <Navbar numRepos={repos.length} />
 
       <div
         className="
           w-full
+          flex-1
           px-4 sm:px-6 lg:px-10
-          pt-8 pb-20 sm:pb-8 
+          pb-20 lg:pb-2 
           bg-linear-to-r from-background via-white/3 to-background
           flex flex-col
           md:flex-row
           gap-8
+          lg:overflow-hidden
         "
         style={{
           backgroundImage: `
@@ -37,21 +39,40 @@ export default async function Home() {
           backgroundSize: '4px 4px, 100% 100%',
         }}
       >
-        {/* LEFT - Fixed on md+ */}
-        <main id="about" className="w-full md:w-1/3 md:sticky md:top-12 md:h-screen">
+        {/* LEFT - Fixed on md+ / scrollable left column on lg+ */}
+        <main
+          id="about"
+          className="
+            w-full
+            md:w-1/3
+            md:sticky
+            md:top-12
+            md:h-screen
+            lg:static
+            lg:h-full
+            lg:overflow-y-auto
+            scrollbar-hide
+            shrink-0
+          "
+        >
           <HeroSection />
         </main>
 
-        {/* RIGHT - Scrollable on md+ */}
+        {/* RIGHT - Scrollable body on lg+ */}
         <div
           className="
             w-full 
             md:w-2/3 
-            flex flex-col gap-4
+            flex flex-col gap-10
+            lg:h-full
+            lg:overflow-y-auto
+            thin-scrollbar
+            px-2 lg:pl-4 lg:pr-8
+            pt-2 pb-24 sm:pb-32
           "
         >
           {/* Pinned */}
-          <div>
+          <div id="pinned">
             <p className="text-sm font-semibold flex items-center gap-1">Pinned</p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-3">
               {pinnedRepos.map((repo) => (
@@ -66,14 +87,12 @@ export default async function Home() {
 
           <Skills />
 
-          <p className="text-sm font-mono text-white/40 tracking-wide mt-1 text-center">
-            {"drop a message... let's connect 🤝"}
-          </p>
+          <ConnectText />
         </div>
       </div>
 
       <DynamicIsland />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

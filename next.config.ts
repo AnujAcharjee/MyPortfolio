@@ -31,16 +31,16 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: `
       default-src 'self';
-      script-src 'self' 'unsafe-inline';
+      script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""};
       style-src 'self' 'unsafe-inline';
       img-src 'self' https: data:;
-      connect-src 'self' https://api.github.com;
+      connect-src 'self' https://api.github.com${isDev ? " ws: wss:" : ""};
       font-src 'self' https: data:;
       object-src 'none';
       base-uri 'self';
       frame-ancestors 'none';
-      upgrade-insecure-requests;
-    `.replace(/\n/g, ''),
+      ${isDev ? "" : "upgrade-insecure-requests;"}
+    `.replace(/\s{2,}/g, ' ').trim(),
   },
 ];
 

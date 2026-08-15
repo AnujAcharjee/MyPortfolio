@@ -8,10 +8,8 @@ export const PROJECT_WORDS = [
 
 export const SKILL_WORDS = [
   { text: '#', className: wordClass },
-  { text: 'What', className: wordClass },
-  { text: 'I', className: wordClass },
-  { text: 'Work', className: wordClass },
-  { text: 'With', className: wordClass },
+  { text: 'My', className: wordClass },
+  { text: 'Toolkit', className: wordClass },
 ];
 
 export const CONTACT_WORDS = [

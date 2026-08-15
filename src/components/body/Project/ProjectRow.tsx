@@ -17,21 +17,21 @@ export function ProjectRow({ card, index, id, onClick }: ProjectRowProps) {
       layoutId={`card-${card.title}-${id}`}
       key={`card-${card.title}-${id}`}
       onClick={onClick}
-      className="group grid grid-cols-1 md:grid-cols-[2rem_auto_1fr_auto] gap-3 md:gap-4 items-center px-5 py-4 cursor-pointer hover:bg-white/3 transition-colors"
+      className="group grid grid-cols-1 lg:grid-cols-[2rem_auto_1fr_auto] gap-3 lg:gap-4 items-center px-5 py-4 cursor-pointer hover:bg-white/3 transition-colors"
     >
       {/* Index */}
-      <span className="hidden md:block text-xs font-mono text-white/20 group-hover:text-sky-500/50 transition-colors tabular-nums">
+      <span className="hidden lg:block text-xs font-mono text-white/20 group-hover:text-sky-500/50 transition-colors tabular-nums">
         {String(index + 1).padStart(2, '0')}
       </span>
 
       {/* Thumbnail */}
-      <motion.div layoutId={`image-${card.title}-${id}`} className="shrink-0">
+      <motion.div layoutId={`image-${card.title}-${id}`} className="w-full lg:w-auto shrink-0">
         <Image
           src={card.img}
           alt={card.title}
-          width={40}
-          height={40}
-          className="h-10 w-10 rounded-md object-cover object-top border border-white/10 group-hover:border-sky-500/30 transition-colors"
+          width={600}
+          height={300}
+          className="w-full aspect-[2/1] h-auto lg:h-10 lg:w-10 lg:aspect-square rounded-lg lg:rounded-md object-cover object-top border border-white/10 group-hover:border-sky-500/30 transition-colors"
         />
       </motion.div>
 

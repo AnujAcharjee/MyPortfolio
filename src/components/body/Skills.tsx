@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { HoverBorderGradient } from '../ui/hover-border-gradient';
 import { ChevronsLeftRight, Wrench, Frame, Server } from 'lucide-react';
 import { TypewriterEffect } from '../ui/typewriter-effect';
@@ -83,17 +83,80 @@ export default function Skills() {
                 </span>
               </div>
 
-              {/* Pills */}
-              <div className="flex flex-wrap gap-2 sm:gap-2.5">
-                {skill.items.map((item) => (
-                  <SkillPill key={item} label={item} accent={skill.accent} />
-                ))}
-              </div>
+              {/* Pills - Marquee */}
+              <MarqueeRow items={skill.items} accent={skill.accent} />
             </div>
           ))}
         </div>
       </HoverBorderGradient>
     </section>
+  );
+}
+
+function MarqueeRow({ items, accent }: { items: string[]; accent: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (containerRef.current && contentRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        let contentWidth = 0;
+        const children = contentRef.current.children;
+        const count = items.length;
+
+        if (children.length >= count) {
+          const firstChild = children[0] as HTMLElement;
+          const lastChild = children[count - 1] as HTMLElement;
+          if (firstChild && lastChild) {
+            contentWidth = lastChild.getBoundingClientRect().right - firstChild.getBoundingClientRect().left;
+          }
+        } else {
+          contentWidth = contentRef.current.scrollWidth;
+        }
+
+        setShouldAnimate(contentWidth > containerWidth);
+      }
+    };
+
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
+
+    const observer = new ResizeObserver(checkOverflow);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', checkOverflow);
+      observer.disconnect();
+    };
+  }, [items]);
+
+  const displayItems = shouldAnimate ? [...items, ...items] : items;
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative overflow-hidden w-full py-2"
+      style={shouldAnimate ? {
+        maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',
+      } : undefined}
+    >
+      <div
+        ref={contentRef}
+        className={`flex gap-2 sm:gap-2.5 w-max py-1 ${shouldAnimate ? 'hover:[animation-play-state:paused]' : ''}`}
+        style={shouldAnimate ? {
+          animation: `marquee-left ${20 + items.length * 3}s linear infinite`,
+        } : undefined}
+      >
+        {displayItems.map((item, i) => (
+          <SkillPill key={`${item}-${i}`} label={item} accent={accent} />
+        ))}
+      </div>
+    </div>
   );
 }
 

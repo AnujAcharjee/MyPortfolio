@@ -6,6 +6,7 @@ export type Project = {
   img: string;
   gitHubLink: string;
   webLink?: string;
+  videoLink?: string;
   content: string;
 };
 
@@ -32,8 +33,18 @@ export const PROJECTS: Project[] = [
     description: 'A command-line based stock trading simulator.',
     img: ImgLink.stockRush,
     gitHubLink: 'https://github.com/AnujAcharjee/Stock-Rush-CLI',
+    videoLink: 'https://www.youtube.com/watch?v=TQ8VVcfNWXk',
     content:
       'Third year of uni, touched multithreading for the first time and bro... it was the coolest thing ever for me at that point. Like multiple processes running simultaneously 🤯?? I was losing it. So I was like, let me try this fr; and built Stock Rush, a CLI app that simulates real-time stock trading in the terminal. Track portfolios, execute buy/sell orders, view market data, all without leaving the command line. Was it necessary? Probably not. Did I have fun? Absolutely',
+  },
+  {
+    title: 'Todo Spaces',
+    description: 'A mobile-optimized web app with local IndexedDB storage.',
+    img: ImgLink.todoSpaces,
+    gitHubLink: 'https://github.com/AnujAcharjee/todo-spaces',
+    webLink: 'https://todospaces.anujacharjee.com',
+    content:
+      'I built this web-based TODO app for one main reason: to finally wrap my head around Zustand. It’s fully optimized for mobile browsers, and instead of spinning up a backend, I hooked it straight into the browser\'s IndexedDB to persist data locally. It’s simple, snappy, and learning how to manage and save state directly on the client side was a massive lightbulb moment.',
   },
   {
     title: 'Wanderlust',
@@ -45,12 +56,12 @@ export const PROJECTS: Project[] = [
     content:
       "Wanderlust was my first ever MERN stack project 😁. Inspired by Airbnb, it's a full-stack rental platform where users can create listings, search for stays, and go through the entire booking workflow, all wrapped in a clean, responsive UI. It's not perfect, but it's got its own charm...",
   },
-  {
-    title: 'Amazon UI Clone',
-    description: 'UI clone built with HTML & CSS.',
-    img: ImgLink.amazonClone,
-    gitHubLink: 'https://github.com/AnujAcharjee/amazon-clone',
-    content:
-      'Back when I thought HTML and CSS were the hardest things in the world, I built an Amazon clone and nearly lost my mind over a misaligned div. Homepage, product listing, cart pages — all of it, pixel-perfect. Young me was built different 😭',
-  },
+  // {
+  //   title: 'Amazon UI Clone',
+  //   description: 'UI clone built with HTML & CSS.',
+  //   img: ImgLink.amazonClone,
+  //   gitHubLink: 'https://github.com/AnujAcharjee/amazon-clone',
+  //   content:
+  //     'Back when I thought HTML and CSS were the hardest things in the world, I built an Amazon clone and nearly lost my mind over a misaligned div. Homepage, product listing, cart pages — all of it, pixel-perfect. Young me was built different 😭',
+  // },
 ];
